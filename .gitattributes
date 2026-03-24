@@ -1,0 +1,4 @@
+/mvnw text eol=lf
+*.cmd text eol=crlf
+/src/main/resources/static/lib/**  -text
+/gradle/wrapper/**  -text
