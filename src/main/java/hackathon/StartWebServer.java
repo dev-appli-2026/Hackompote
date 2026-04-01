@@ -9,6 +9,7 @@ public class StartWebServer {
 	public static void main( String[] args ) {
         
 		SpringApplication.run( StartWebServer.class, args );
-	}
+
+    }
 
 }
