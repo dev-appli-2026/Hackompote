@@ -18,6 +18,7 @@ CREATE TABLE Utilisateur (
    statut_recherche BOOLEAN DEFAULT TRUE,
    PRIMARY KEY(id_utilisateur),
    UNIQUE(adresse_mail)
+
 );
 
 CREATE TABLE Evenement (
