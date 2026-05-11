@@ -9,8 +9,8 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
-import hackathon.domain.Compte;
-import hackathon.repository.CompteRepository;
+import hackathon.compte.Compte;
+import hackathon.compte.CompteRepository;
 import lombok.RequiredArgsConstructor;
 
 @Service

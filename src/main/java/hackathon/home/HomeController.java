@@ -1,4 +1,4 @@
-package hackathon.controller;
+package hackathon.home;
 
 import static org.springframework.security.web.context.HttpSessionSecurityContextRepository.SPRING_SECURITY_CONTEXT_KEY;
 
@@ -16,7 +16,7 @@ import lombok.RequiredArgsConstructor;
 
 @Controller
 @RequiredArgsConstructor
-public class PublicController {
+public class HomeController {
 
 	// -------
 	// Champs

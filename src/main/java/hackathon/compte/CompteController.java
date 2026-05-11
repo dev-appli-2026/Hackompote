@@ -1,4 +1,4 @@
-package hackathon.controller;
+package hackathon.compte;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -14,8 +14,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import hackathon.domain.Compte;
-import hackathon.repository.CompteRepository;
 import hackathon.util.Alert;
 import hackathon.util.Paging;
 import jakarta.annotation.security.RolesAllowed;

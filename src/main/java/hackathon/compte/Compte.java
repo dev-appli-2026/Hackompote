@@ -1,4 +1,4 @@
-package hackathon.domain;
+package hackathon.compte;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.annotation.Transient;

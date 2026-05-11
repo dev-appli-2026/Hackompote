@@ -1,4 +1,4 @@
-package hackathon.controller;
+package hackathon.security;
 
 import static hackathon.util.Alert.Color.DANGER;
 import static hackathon.util.Alert.Color.SUCCESS;
