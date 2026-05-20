@@ -1,5 +1,3 @@
-
-
 DROP SCHEMA IF EXISTS hackompote CASCADE;
 CREATE SCHEMA hackompote;
 
@@ -13,13 +11,15 @@ CREATE TABLE Utilisateur (
     id_utilisateur  SERIAL PRIMARY KEY,
     nom             VARCHAR(255) NOT NULL,
     prenom          VARCHAR(255) NOT NULL,
+    pseudo          VARCHAR(255) NOT NULL,
     date_naissance  DATE NOT NULL,
     adresse_mail    VARCHAR(255) NOT NULL UNIQUE,
     mot_de_passe    VARCHAR(255) NOT NULL,
+    empreinte_mdp   VARCHAR(255) NOT NULL,
     role            VARCHAR(50) NOT NULL CHECK (role IN ('Participant', 'Mentor', 'Jury', 'Admin')),
     lien_cv         VARCHAR(255),
-    competences_cles TEXT,
-    statut_recherche BOOLEAN DEFAULT TRUE
+    competences_cles    TEXT,
+    statut_recherche    BOOLEAN DEFAULT TRUE
 );
 
 CREATE TABLE Evenement (
