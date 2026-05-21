@@ -13,7 +13,6 @@ import org.springframework.data.relational.core.mapping.Table;
 @NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode( of = { "idUtilisateur" } )
-@Table(name = "utilisateur", schema = "hackompote")
 public class Utilisateur {
 
     // -------
