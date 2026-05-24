@@ -17,14 +17,12 @@ public class SecurityController {
 	// -------
 
 	// connexion()
-
 	@GetMapping( "/connexion" )
 	public String connexion() {
 		return "public/connexion.html";
 	}
 
 	// login()
-
 	@GetMapping( "/login" )
 	public String login( RedirectAttributes ra ) {
 		ra.addFlashAttribute( "alert", new Alert( DANGER, "Vous n'êtes pas connecté·e" ) );
@@ -32,7 +30,6 @@ public class SecurityController {
 	}
 
 	// loginError()
-
 	@GetMapping( path = "/login", params = "error" )
 	public String loginError( RedirectAttributes ra ) {
 		ra.addFlashAttribute( "alert", new Alert( DANGER, "Identifiant ou mot de passe erroné" ) );
@@ -40,7 +37,6 @@ public class SecurityController {
 	}
 
 	// accessDenied()
-
 	@GetMapping( "/accessDenied" )
 	public String accessDenied( RedirectAttributes ra ) {
 		ra.addFlashAttribute( "alert", new Alert( DANGER, "Accès non autorié !" ) );
@@ -48,7 +44,6 @@ public class SecurityController {
 	}
 
 	// disconnected()
-
 	@GetMapping( "/disconnected" )
 	public String disconnected( RedirectAttributes ra ) {
 		ra.addFlashAttribute( "alert", new Alert( SUCCESS, "Déconnexion effectuée avec succès !" ) );

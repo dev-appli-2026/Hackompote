@@ -49,21 +49,10 @@ public class SecurityConfig {
 	RememberMeServices rememberMeServices(
 			UserDetailsService userDetailsService ) {
 
-		var services = new TokenBasedRememberMeServices(
-				"3c707a4c-34c9-4421-a3d4-85f20db0359e",
-				userDetailsService );
+		var services = new TokenBasedRememberMeServices("3c707a4c-34c9-4421-a3d4-85f20db0359e", userDetailsService );
 		services.setAlwaysRemember( false );
 		services.setTokenValiditySeconds( 7 * 24 * 60 * 60 );
 		return services;
 	}
 
-	// -------
-	// PasswordEncoder
-
-	@Bean
-	PasswordEncoder passwordEncoder() {
-		var dpe = (DelegatingPasswordEncoder) PasswordEncoderFactories.createDelegatingPasswordEncoder();
-		dpe.setDefaultPasswordEncoderForMatches( new BCryptPasswordEncoder() );
-		return dpe;
-	}
 }

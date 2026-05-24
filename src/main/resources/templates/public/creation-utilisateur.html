@@ -1,0 +1,187 @@
+<!doctype html>
+<html th:with="tabTitle='Créer un compte'" lang="fr">
+
+<head th:replace="~{_fragments/layout :: head(${tabTitle})}">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" th:href="@{/css/styles.css}" />
+</head>
+
+<body>
+
+<!-- -->
+<!-- En-tête de page - barre de navigation -->
+<!-- -->
+<header th:replace="~{_fragments/layout :: header }"></header>
+
+<!-- -->
+<!-- Contenu de la page -->
+<!-- -->
+<section class="container my-3">
+
+    <!-- Titre en haut de la page -->
+    <h2 class="text-center">Créer un compte</h2>
+
+    <!-- Espacement vertical -->
+    <div class="py-2 py-lg-4"></div>
+
+    <!-- Ajustement en largeur -->
+    <div class="mx-auto" style="max-width: 30rem;">
+
+        <!-- Formulaire de saisie -->
+        <form class="mb-auto" th:action="@{/creation}" method="post" enctype="multipart/form-data" th:object="${creationUtilisateurForm}">
+
+
+            <!-- Prénom -->
+            <div class="row my-2">
+                <div class="col-12 col-xl-5">
+                    <label for="prenom" class="form-label">Prénom</label>
+                </div>
+                <div class="col">
+                    <input type="text" id="prenom" th:field="*{prenom}" required class="form-control">
+                </div>
+            </div>
+
+            <!-- Nom -->
+            <div class="row my-2">
+                <div class="col-12 col-xl-5">
+                    <label for="nom" class="form-label">Nom</label>
+                </div>
+                <div class="col">
+                    <input type="text" id="nom" th:field="*{nom}" required class="form-control">
+                </div>
+            </div>
+
+            <!-- Pseudo -->
+            <div class="row my-2">
+                <div class="col-12 col-xl-5">
+                    <label for="pseudo" class="form-label">Pseudo</label>
+                </div>
+                <div class="col">
+                    <input type="text" id="pseudo" th:field="*{pseudo}" required class="form-control">
+                </div>
+            </div>
+
+            <!-- Date de naissance -->
+            <div class="row my-2">
+                <div class="col-12 col-xl-5">
+                    <label for="date-naissance" class="form-label">Date de naissance</label>
+                </div>
+                <div class="col">
+                    <input type="date" id="date-naissance" th:field="*{dateNaissance}" required class="form-control">
+                </div>
+            </div>
+
+            <!-- Adresse mail -->
+            <div class="row my-2">
+                <div class="col-12 col-xl-5">
+                    <label for="adresse-mail" class="form-label">Adresse mail</label>
+                </div>
+                <div class="col">
+                    <input type="email" id="adresse-mail" th:field="*{adresseMail}" required class="form-control">
+                </div>
+            </div>
+
+            <!-- Mot de passe -->
+            <div class="row my-2">
+                <div class="col-12 col-xl-5">
+                    <label for="mot-de-passe" class="col-form-label">Mot de passe</label>
+                </div>
+                <div class="col">
+                    <div class="input-group">
+                        <div class="input-group">
+                            <input type="password" id="mot-de-passe" th:field="*{motDePasse}" required class="form-control">
+                            <button type="button" class="input-group-text btn-link" onclick="togglePassword('motDePasse', this)">
+                                <i class="bi-eye"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Confirmation mot de passe -->
+            <div class="row my-2">
+                <div class="col-12 col-xl-5">
+                    <label for="confirmation-mot-de-passe" class="col-form-label">Confirmation mot de passe</label>
+                </div>
+                <div class="col">
+                    <div class="input-group">
+                        <div class="input-group">
+                            <input type="password" id="confirmation-mot-de-passe" class="form-control" th:field="*{confirmationMotDePasse}" required>
+                            <button type="button" class="input-group-text btn-link" onclick="togglePassword('confirmationMotDePasse', this)">
+                                <i class="bi-eye"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Depot CV -->
+            <div class="row my-2">
+                <div class="col-12 col-xl-5">
+                    <label for="cv" class="form-label">Déposer votre CV (pdf)</label>
+                </div>
+                <div class="col">
+                    <input type="file" id="cv" th:field="*{cv}" accept=".pdf" class="form-control">
+                </div>
+            </div>
+
+            <!-- Statu de recherche -->
+            <div class="row my-2">
+                <div class="col-12 col-xl-5">
+                    <label for="statut-recherche" class="form-label">Êtes-vous en recherche d’opportunités ?</label>
+                </div>
+                <div class="col">
+                    <input type="checkbox" id="statut-recherche" th:field="*{statutRecherche}">
+                </div>
+            </div>
+
+            <!-- Boutons en bas du formulaire -->
+            <div class="text-center mt-4 mt-xl-5 mb-5">
+                <input type="submit" class="btn btn-primary" value="Créer votre compte">
+            </div>
+
+        </form> <!-- Fin Formulaire de saisie -->
+
+        <!--  Code fait pour test par Progauss a verif (venir m'en parler)  -->
+        <div class="text-center mt-4 mt-xl-5 mb-5">
+            <a th:href="@{/connexion}" class="btn btn-primary">Se connecter</a>
+        </div>
+        <!--  ------------------------------------------------------------------------  -->
+
+    </div> <!-- Fin Ajustement en largeur -->
+
+</section> <!-- Fin Contenu de la page -->
+
+<!-- Message d'alerte -->
+<div th:replace="~{_fragments/component :: alert}"></div>
+
+<!-- -->
+<!-- Pied de page -->
+<!-- -->
+<footer th:replace="~{_fragments/layout :: footer}"></footer>
+
+<!-- Scripts définis dans le layout -->
+<th:block th:replace="~{_fragments/layout :: bottom-scripts}"></th:block>
+
+<!-- Scripts spécifiques à cette page -->
+<script>
+    function togglePassword(inputId, button) {
+        const input = document.getElementById(inputId);
+        const icon = button.querySelector('i');
+
+        if (input.type === 'password') {
+            input.type = 'text';
+            icon.classList.remove('bi-eye');
+            icon.classList.add('bi-eye-slash');
+        } else {
+            input.type = 'password';
+            icon.classList.remove('bi-eye-slash');
+            icon.classList.add('bi-eye');
+        }
+    }
+</script>
+
+</body>
+
+</html>
