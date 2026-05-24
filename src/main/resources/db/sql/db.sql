@@ -15,7 +15,6 @@ CREATE TABLE Utilisateur (
     date_naissance  DATE NOT NULL,
     adresse_mail    VARCHAR(255) NOT NULL UNIQUE,
     mot_de_passe    VARCHAR(255) NOT NULL,
-    empreinte_mdp   VARCHAR(255) NOT NULL,
     role            VARCHAR(50) NOT NULL CHECK (role IN ('Participant', 'Mentor', 'Jury', 'Admin')),
     lien_cv         VARCHAR(255),
     competences_cles    TEXT,
