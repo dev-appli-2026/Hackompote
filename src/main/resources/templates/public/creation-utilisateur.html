@@ -71,8 +71,8 @@
                 <div class="input-group">
                     <div class="input-group">
                         <input type="password" id="mot-de-passe" th:field="*{motDePasse}" required class="form-control">
-                        <button type="button" class="input-group-text btn-link" onclick="togglePassword('motDePasse', this)">
-                            <i class="bi-eye"></i>
+                        <button type="button" class="input-group-text btn-link" onclick="showHidePassword()">
+                            <i id="eyeIcon1" class="bi-eye"></i>
                         </button>
                     </div>
                 </div>
@@ -84,8 +84,8 @@
                 <div class="input-group">
                     <div class="input-group">
                         <input type="password" id="confirmation-mot-de-passe" class="form-control" th:field="*{confirmationMotDePasse}" required>
-                        <button type="button" class="input-group-text btn-link" onclick="togglePassword('confirmationMotDePasse', this)">
-                            <i class="bi-eye"></i>
+                        <button type="button" class="input-group-text btn-link" onclick="showHidePasswordConfirm()">
+                            <i id="eyeIcon2" class="bi-eye"></i>
                         </button>
                     </div>
                 </div>
@@ -138,18 +138,27 @@
 
 <!-- Scripts spécifiques à cette page -->
 <script>
-    function togglePassword(inputId, button) {
-        const input = document.getElementById(inputId);
-        const icon = button.querySelector('i');
-
-        if (input.type === 'password') {
-            input.type = 'text';
-            icon.classList.remove('bi-eye');
-            icon.classList.add('bi-eye-slash');
+    function showHidePassword() {
+        var input = $('#mot-de-passe')
+        var icon  = $('#eyeIcon1')
+        if (input.attr('type') === 'password') {
+            input.attr('type', 'text')
+            icon.removeClass('bi-eye').addClass('bi-eye-slash')
         } else {
-            input.type = 'password';
-            icon.classList.remove('bi-eye-slash');
-            icon.classList.add('bi-eye');
+            input.attr('type', 'password')
+            icon.removeClass('bi-eye-slash').addClass('bi-eye')
+        }
+    }
+
+    function showHidePasswordConfirm() {
+        var input = $('#confirmation-mot-de-passe')
+        var icon  = $('#eyeIcon2')
+        if (input.attr('type') === 'password') {
+            input.attr('type', 'text')
+            icon.removeClass('bi-eye').addClass('bi-eye-slash')
+        } else {
+            input.attr('type', 'password')
+            icon.removeClass('bi-eye-slash').addClass('bi-eye')
         }
     }
 </script>
