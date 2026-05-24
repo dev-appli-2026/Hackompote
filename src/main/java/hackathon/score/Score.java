@@ -7,11 +7,13 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
+import org.springframework.data.relational.core.mapping.Table;
 
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode( of = { "idScore" } )
+@Table("badge")
 public class Score {
 
     // -------

@@ -1,7 +1,8 @@
 package hackathon.badge;
 
 import org.springframework.data.annotation.Id;
-import org.springframework.data.annotation.Transient;
+import org.springframework.data.relational.core.mapping.Column;
+import org.springframework.data.relational.core.mapping.Table;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -11,16 +12,17 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@EqualsAndHashCode( of = { "idBadge" } )
+@EqualsAndHashCode(of = "idBadge")
+@Table("badge")
 public class Badge {
 
-    // -------
-    // Champs
-    // -------
-
     @Id
-    private Long	idBadge;
-    private String	nomBadge;
-    private String	iconeUrl;
+    @Column("id_badge")
+    private Long idBadge;
 
+    @Column("nom_badge")
+    private String nomBadge;
+
+    @Column("icone_url")
+    private String iconeUrl;
 }
