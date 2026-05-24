@@ -7,79 +7,93 @@
   <link rel="stylesheet" th:href="@{/css/styles.css}">
 </head>
 
+<!-- Charte graphique personnalisée Hackompote -->
+<th:block th:replace="~{_fragments/style :: charte}"></th:block>
+
 <body>
 
-<header th:replace="~{_fragments/layout :: header}"></header>
+<!-- -->
+<!-- En-tête de page - barre de navigation -->
+<!-- -->
+<header th:replace="~{_fragments/layout :: header }"></header>
 
-<section class="container my-3">
-  <h2 class="text-center">Connexion</h2>
-  <div class="py-2 py-lg-4"></div>
+<!-- -->
+<!-- Contenu de la page : centré verticalement entre header et footer -->
+<!-- -->
+<main class="d-flex justify-content-center align-items-center flex-column py-5" style="min-height: calc(100vh - 56px - 80px);">
 
-  <div class="mx-auto" style="max-width: 30rem;">
-    <form class="mb-auto" th:action="@{/login}" method="post">
+  <!-- Titre + lien retour -->
+  <div class="d-flex flex-row justify-content-between align-items-center mb-4"
+       style="width: 100%; max-width: 420px;">
+    <h1 class="fw-bold mb-0">Se connecter</h1>
+  </div>
 
-      <div class="row my-2">
-        <div class="col-12 col-xl-5">
+  <!-- Card formulaire -->
+  <div class="card shadow-sm rounded-4 p-4" style="width: 100%; max-width: 420px;">
+
+    <form th:action="@{/login}" method="post">
+
+      <!-- E-mail ou pseudo -->
+      <div class="mb-3">
           <label for="username" class="form-label">E-mail (ou pseudo)</label>
-        </div>
-        <div class="col">
           <input type="text" id="username" name="username" required autofocus class="form-control" autocomplete="username">
-        </div>
       </div>
 
-      <div class="row my-2">
-        <div class="col-12 col-xl-5">
+      <!-- Mot de passe -->
+      <div class="mb-3">
           <label for="password" class="col-form-label">Mot de passe</label>
-        </div>
-        <div class="col">
-          <div class="input-group">
+        <div class="input-group">
             <input type="password" id="password" class="form-control" name="password" required autocomplete="current-password">
             <button type="button" class="input-group-text btn-link" onclick="showHidePassword()">
               <i id="eyeIcon" class="bi-eye"></i>
             </button>
-          </div>
         </div>
       </div>
 
-      <div class="row my-3">
-        <div class="col-6 col-xl-5">
-          <label for="remember-me" class="form-check-label">Se souvenir de moi</label>
-        </div>
-        <div class="col">
-          <div class="form-check">
-            <input type="checkbox" id="remember-me" class="form-check-input" name="remember-me" value="true">
-          </div>
-        </div>
+      <!-- Se souvenir de moi -->
+      <div class="mb-4 d-flex align-items-center gap-2">
+        <label for="remember-me" class="form-check-label">Se souvenir de moi</label>
+        <input type="checkbox" id="remember-me" class="form-check-input" name="remember-me" value="true">
       </div>
 
-      <div class="text-center mt-4 mt-xl-5 mb-5">
-        <input type="submit" class="btn btn-primary" value="Se connecter">
-      </div>
+      <!--  Bouton connexion  -->
+      <button type="submit" class="btn btn-primary w-100 rounded-3 mb-3">Se connecter</button>
+
+      <!--  Pas encore inscrit ?  -->
+      <a th:href="@{/creation}" class="btn btn-secondary w-100 rounded-3">Pas encore inscrit ?</a>
+
     </form>
 
-    <div class="text-center mt-4 mt-xl-5 mb-5">
-      <a th:href="@{/creation}" class="btn btn-primary">Créer un compte</a>
-    </div>
-  </div>
-</section>
+  </div><!-- Fin card -->
 
+</main><!-- Fin contenu -->
+
+<!-- Message d'alerte -->
 <div th:replace="~{_fragments/component :: alert}"></div>
+
+<!-- -->
+<!-- Pied de page -->
+<!-- -->
 <footer th:replace="~{_fragments/layout :: footer}"></footer>
+
+<!-- Scripts définis dans le layout -->
 <th:block th:replace="~{_fragments/layout :: bottom-scripts}"></th:block>
 
+<!-- Scripts spécifiques à cette page -->
 <script>
-  function showHidePassword() {
-    var input = $('#password');
-    var icon = $('#eyeIcon');
+  function showHidehPassword() {
+    var input = $('#password')
+    var icon  = $('#eyeIcon')
     if (input.attr('type') === 'password') {
-      input.attr('type', 'text');
-      icon.removeClass('bi-eye').addClass('bi-eye-slash');
+      input.attr('type', 'text')
+      icon.removeClass('bi-eye').addClass('bi-eye-slash')
     } else {
-      input.attr('type', 'password');
-      icon.removeClass('bi-eye-slash').addClass('bi-eye');
+      input.attr('type', 'password')
+      icon.removeClass('bi-eye-slash').addClass('bi-eye')
     }
   }
 </script>
 
 </body>
+
 </html>
