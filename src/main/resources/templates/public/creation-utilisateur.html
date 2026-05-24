@@ -7,6 +7,9 @@
     <link rel="stylesheet" th:href="@{/css/styles.css}" />
 </head>
 
+<!-- Charte graphique personnalisée Hackompote -->
+<th:block th:replace="~{_fragments/style :: charte}"></th:block>
+
 <body>
 
 <!-- -->
@@ -17,107 +20,79 @@
 <!-- -->
 <!-- Contenu de la page -->
 <!-- -->
-<section class="container my-3">
+<main class="d-flex justify-content-center align-items-center flex-column py-5" style="min-height: calc(100vh - 56px - 80px);">
 
     <!-- Titre en haut de la page -->
-    <h2 class="text-center">Créer un compte</h2>
-
-    <!-- Espacement vertical -->
-    <div class="py-2 py-lg-4"></div>
+    <div class="d-flex flex-row justify-content-between align-items-center mb-4"
+         style="width: 100%; max-width: 620px;">
+        <h1 class="fw-bold mb-0">Créer un compte</h1>
+    </div>
 
     <!-- Ajustement en largeur -->
-    <div class="mx-auto" style="max-width: 30rem;">
+    <div class="card shadow-sm rounded-4 p-4" style="width: 100%; max-width: 620px;">
 
         <!-- Formulaire de saisie -->
-        <form class="mb-auto" th:action="@{/creation}" method="post" enctype="multipart/form-data" th:object="${creationUtilisateurForm}">
+        <form th:action="@{/creation}" method="post" enctype="multipart/form-data" th:object="${creationUtilisateurForm}">
 
 
             <!-- Prénom -->
-            <div class="row my-2">
-                <div class="col-12 col-xl-5">
-                    <label for="prenom" class="form-label">Prénom</label>
-                </div>
-                <div class="col">
-                    <input type="text" id="prenom" th:field="*{prenom}" required class="form-control">
-                </div>
+            <div class="mb-2">
+                <label for="prenom" class="form-label">Prénom</label>
+                <input type="text" id="prenom" th:field="*{prenom}" required class="form-control">
             </div>
 
             <!-- Nom -->
-            <div class="row my-2">
-                <div class="col-12 col-xl-5">
-                    <label for="nom" class="form-label">Nom</label>
-                </div>
-                <div class="col">
-                    <input type="text" id="nom" th:field="*{nom}" required class="form-control">
-                </div>
+            <div class="mb-2">
+                <label for="nom" class="form-label">Nom</label>
+                <input type="text" id="nom" th:field="*{nom}" required class="form-control">
             </div>
 
             <!-- Pseudo -->
-            <div class="row my-2">
-                <div class="col-12 col-xl-5">
-                    <label for="pseudo" class="form-label">Pseudo</label>
-                </div>
-                <div class="col">
-                    <input type="text" id="pseudo" th:field="*{pseudo}" required class="form-control">
-                </div>
+            <div class="mb-2">
+                <label for="pseudo" class="form-label">Pseudo</label>
+                <input type="text" id="pseudo" th:field="*{pseudo}" required class="form-control">
             </div>
 
             <!-- Date de naissance -->
-            <div class="row my-2">
-                <div class="col-12 col-xl-5">
-                    <label for="date-naissance" class="form-label">Date de naissance</label>
-                </div>
-                <div class="col">
-                    <input type="date" id="date-naissance" th:field="*{dateNaissance}" required class="form-control">
-                </div>
+            <div class="mb-2">
+                <label for="date-naissance" class="form-label">Date de naissance</label>
+                <input type="date" id="date-naissance" th:field="*{dateNaissance}" required class="form-control">
             </div>
 
             <!-- Adresse mail -->
-            <div class="row my-2">
-                <div class="col-12 col-xl-5">
-                    <label for="adresse-mail" class="form-label">Adresse mail</label>
-                </div>
-                <div class="col">
-                    <input type="email" id="adresse-mail" th:field="*{adresseMail}" required class="form-control">
-                </div>
+            <div class="mb-2">
+                <label for="adresse-mail" class="form-label">Adresse mail</label>
+                <input type="email" id="adresse-mail" th:field="*{adresseMail}" required class="form-control">
             </div>
 
             <!-- Mot de passe -->
-            <div class="row my-2">
-                <div class="col-12 col-xl-5">
-                    <label for="mot-de-passe" class="col-form-label">Mot de passe</label>
-                </div>
-                <div class="col">
+            <div class="mb-2">
+                <label for="mot-de-passe" class="col-form-label">Mot de passe</label>
+                <div class="input-group">
                     <div class="input-group">
-                        <div class="input-group">
-                            <input type="password" id="mot-de-passe" th:field="*{motDePasse}" required class="form-control">
-                            <button type="button" class="input-group-text btn-link" onclick="togglePassword('motDePasse', this)">
-                                <i class="bi-eye"></i>
-                            </button>
-                        </div>
+                        <input type="password" id="mot-de-passe" th:field="*{motDePasse}" required class="form-control">
+                        <button type="button" class="input-group-text btn-link" onclick="togglePassword('motDePasse', this)">
+                            <i class="bi-eye"></i>
+                        </button>
                     </div>
                 </div>
             </div>
 
             <!-- Confirmation mot de passe -->
-            <div class="row my-2">
-                <div class="col-12 col-xl-5">
-                    <label for="confirmation-mot-de-passe" class="col-form-label">Confirmation mot de passe</label>
-                </div>
-                <div class="col">
+            <div class="mb-5">
+                <label for="confirmation-mot-de-passe" class="col-form-label">Confirmation mot de passe</label>
+                <div class="input-group">
                     <div class="input-group">
-                        <div class="input-group">
-                            <input type="password" id="confirmation-mot-de-passe" class="form-control" th:field="*{confirmationMotDePasse}" required>
-                            <button type="button" class="input-group-text btn-link" onclick="togglePassword('confirmationMotDePasse', this)">
-                                <i class="bi-eye"></i>
-                            </button>
-                        </div>
+                        <input type="password" id="confirmation-mot-de-passe" class="form-control" th:field="*{confirmationMotDePasse}" required>
+                        <button type="button" class="input-group-text btn-link" onclick="togglePassword('confirmationMotDePasse', this)">
+                            <i class="bi-eye"></i>
+                        </button>
                     </div>
                 </div>
             </div>
 
             <!-- Depot CV -->
-            <div class="row my-2">
+            <div class="row mb-2">
                 <div class="col-12 col-xl-5">
                     <label for="cv" class="form-label">Déposer votre CV (pdf)</label>
                 </div>
@@ -126,32 +101,29 @@
                 </div>
             </div>
 
-            <!-- Statu de recherche -->
-            <div class="row my-2">
+            <!-- Statut de recherche -->
+            <div class="row mb-5">
                 <div class="col-12 col-xl-5">
-                    <label for="statut-recherche" class="form-label">Êtes-vous en recherche d’opportunités ?</label>
+                    <label for="statut-recherche" class="form-label">En recherche d’opportunités ?</label>
                 </div>
-                <div class="col">
-                    <input type="checkbox" id="statut-recherche" th:field="*{statutRecherche}">
+                <div class="col align-self-center">
+                    <input type="checkbox" id="statut-recherche" class="form-check-input" th:field="*{statutRecherche}">
                 </div>
             </div>
 
             <!-- Boutons en bas du formulaire -->
-            <div class="text-center mt-4 mt-xl-5 mb-5">
-                <input type="submit" class="btn btn-primary" value="Créer votre compte">
-            </div>
+            <input type="submit" class="btn btn-primary w-100 rounded-3 mb-3" value="Créer votre compte">
+
 
         </form> <!-- Fin Formulaire de saisie -->
 
         <!--  Code fait pour test par Progauss a verif (venir m'en parler)  -->
-        <div class="text-center mt-4 mt-xl-5 mb-5">
-            <a th:href="@{/connexion}" class="btn btn-primary">Se connecter</a>
-        </div>
+        <a th:href="@{/connexion}" class="btn btn-secondary w-100 rounded-3">Déjà inscrit ?</a>
         <!--  ------------------------------------------------------------------------  -->
 
     </div> <!-- Fin Ajustement en largeur -->
 
-</section> <!-- Fin Contenu de la page -->
+</main> <!-- Fin Contenu de la page -->
 
 <!-- Message d'alerte -->
 <div th:replace="~{_fragments/component :: alert}"></div>
