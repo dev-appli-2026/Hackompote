@@ -21,11 +21,22 @@
 
     <h1 class="text-center">Hackathon</h1>
 
-    <br><br>
-
-    <div class="col-12 col-sm-6 my-3 mx-auto text-center">
-      <img class="img-fluid" th:src="@{/img/hackathon.jpg}" style="max-width: 320px;">
-    </div> <!-- Fin Colonne 2 -->
+<!-----------------TODO Faire l'affichage mosaique des evenements------------->
+    <table>
+      <thead>
+      <tr>
+        <th>ID</th>
+        <th>Nom</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr th:each="evenement : ${evenement}">
+        <td th:text="${evenement.idEvenement}"></td>
+        <td th:text="${evenement.nom}"></td>
+      </tr>
+      </tbody>
+    </table>
+<!------------------------------------------------------------------------------->
 
     <br><br><br>
 
