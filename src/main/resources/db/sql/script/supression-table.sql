@@ -1,0 +1,18 @@
+-- Nettoyage complet de la base hackompote avant réinsertion
+SET search_path TO hackompote;
+
+-- Suppression dans l'ordre inverse des dépendances
+DROP TABLE IF EXISTS Favori_Recrutement CASCADE;
+DROP TABLE IF EXISTS Prix CASCADE;
+DROP TABLE IF EXISTS Journal_Bord CASCADE;
+DROP TABLE IF EXISTS Rdv_Mentor CASCADE;
+DROP TABLE IF EXISTS Obtenir_Badge CASCADE;
+DROP TABLE IF EXISTS Badge CASCADE;
+DROP TABLE IF EXISTS Sponsor CASCADE;
+DROP TABLE IF EXISTS Composer_Equipe CASCADE;
+DROP TABLE IF EXISTS Inscription_Evenement CASCADE;
+DROP TABLE IF EXISTS Score CASCADE;
+DROP TABLE IF EXISTS Equipe CASCADE;
+DROP TABLE IF EXISTS Sujet CASCADE;
+DROP TABLE IF EXISTS Evenement CASCADE;
+DROP TABLE IF EXISTS Utilisateur CASCADE;
