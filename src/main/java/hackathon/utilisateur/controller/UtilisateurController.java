@@ -25,7 +25,7 @@ public class UtilisateurController {
         if (!model.containsAttribute("creationUtilisateurForm")) {
             model.addAttribute("creationUtilisateurForm", new CreationUtilisateurForm());
         }
-        return "public/creation-utilisateur.html";
+        return "public/creation/creation-utilisateur.html";
     }
 
     @PostMapping
@@ -43,7 +43,7 @@ public class UtilisateurController {
 
         if (bindingResult.hasErrors()) {
             System.out.println(bindingResult.getAllErrors());
-            return "public/creation-utilisateur.html";
+            return "public/creation/creation-utilisateur.html";
         }
 
         try {
@@ -51,7 +51,7 @@ public class UtilisateurController {
         } catch (IllegalArgumentException e) {
             bindingResult.rejectValue("adresseMail", "adresseMail.exists", e.getMessage());
             System.out.println(bindingResult.getAllErrors());
-            return "public/creation-utilisateur.html";
+            return "public/creation/creation-utilisateur.html";
         }
 
         model.addAttribute("successMessage", "Compte créé avec succès.");
