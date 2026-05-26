@@ -20,93 +20,89 @@
 
 <body>
 
-  <!--  -->
-  <!-- Fragment En-tête de page - Barre de navigation -->
-  <!--  -->
-  <header th:fragment="header" class="sticky-top">
+<!--  -->
+<!-- Fragment En-tête de page - Barre de navigation -->
+<!--  -->
+<header th:fragment="header" class="sticky-top">
 
-    <!-- Barre de navigation -->
-    <nav class="p-0 navbar navbar-expand-md bg-dark navbar-dark">
-      <div class=" container-fluid">
+  <!-- Barre de navigation (fond transparent, padding sur les côtés) -->
+  <nav class="navbar navbar-expand-md navbar-dark mt-2 px-3">
+    <div class="container-fluid">
+
+      <!-- ===== BLOC GAUCHE : logo + liens de navigation (fond orange) ===== -->
+      <div class="d-flex align-items-center rounded px-3 py-2" style="background-color: var(--bs-orange);">
 
         <!-- Logo et nom du site -->
-        <a class="navbar-brand" th:href="@{/}">
+        <a class="navbar-brand me-3" th:href="@{/}">
           <picture>
             <source media="(max-width: 768px)" th:srcset="@{/img/logo-carre-28.png}">
             <img class="img-fluid" th:src="@{/img/logo-carre-40.png}">
           </picture>
           <span style="color: white;">Hackathon</span>
-        </a>
+        </a> <!-- Fin Logo et nom du site -->
 
-        <!-- Bouton menu -->
+        <!-- Bouton menu burger (visible en mobile) -->
         <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#menu1">
           <span class="navbar-toggler-icon"></span>
-        </button>
+        </button> <!-- Fin Bouton menu burger -->
 
-        <!-- Section escamotable de la barre de navigation -->
+        <!-- Section escamotable : liens de navigation -->
         <div class="collapse navbar-collapse" id="menu1">
+          <ul class="navbar-nav align-items-center">
 
-          <!-- Partie gauche de la section escamotable -->
-          <ul class="navbar-nav">
-
-            <!-- Liste déroulante Gestion -->
+            <!-- Liste déroulante Gestion (Admin uniquement) -->
             <li class="nav-item dropdown" sec:authorize="hasRole('Admin')">
-              <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Gestion</a>
+              <a href="#" class="nav-link text-white dropdown-toggle" data-bs-toggle="dropdown">Gestion</a>
               <ul class="dropdown-menu">
-                <li>
-                  <a th:href="@{/compte/list}" class="dropdown-item">Comptes</a>
-                </li>
-              </ul>
+                <li><a th:href="@{/compte/list}" class="dropdown-item">Comptes</a></li>
+              </ul> <!-- Fin menu déroulant Gestion -->
             </li> <!-- Fin Liste déroulante Gestion -->
 
-            <!-- Item de menu simple -->
-            <li class="nav-item" sec:authorize="hasRole('Admin')">
-              <a th:href="@{/compte/list}" class="nav-link">Comptes</a>
+            <!-- Liens directs -->
+            <li class="nav-item">
+              <a th:href="@{/}" class="nav-link text-white">Accueil</a>
             </li>
+            <li class="nav-item">
+              <a th:href="@{/qui-sommes-nous}" class="nav-link text-white">Qui sommes-nous ?</a>
+            </li>
+            <li class="nav-item">
+              <a th:href="@{/mentions-legales}" class="nav-link text-white">Mentions légales</a>
+            </li>
+            <!-- Fin Liens directs -->
 
-            <!-- Liste déroulante A Propos -->
-            <li class="nav-item dropdown">
-              <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">A propos</a>
-              <ul class="dropdown-menu">
-                <li>
-                  <a th:href="@{/}" class="dropdown-item">Accueil</a>
-                </li>
-                <li>
-                  <a th:href="@{/qui-sommes-nous}" class="dropdown-item">Qui sommes-nous ?</a>
-                </li>
-                <li>
-                  <a th:href="@{/mentions-legales}" class="dropdown-item">Mentions légales</a>
-                </li>
-              </ul>
-            </li> <!-- Fin Liste déroulante A Propos -->
+          </ul> <!-- Fin liste des liens -->
+        </div> <!-- Fin Section escamotable -->
 
-          </ul> <!-- Fin Partie gauche de la section escamotable -->
+      </div>
+      <!-- ===== FIN BLOC GAUCHE ===== -->
 
-          <!-- Partie droite de la section escamotable -->
-          <ul class=" navbar-nav ms-auto">
+      <!-- ===== BLOC DROITE : boutons connexion / déconnexion (fond orange) ===== -->
+      <div class="d-flex align-items-center rounded px-3 py-2" style="background-color: var(--bs-orange);">
 
-            <!-- Liste déroulante Utilisateur -->
-            <li class="nav-item dropdown text-md-end" style="min-width: 8rem;">
-              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
-                <i class="bi-person-circle">&nbsp;</i>
-                <span sec:authorize="isAuthenticated()" sec:authentication="name"></span>
-              </a>
-              <ul class="dropdown-menu">
-                <li sec:authorize="isAnonymous()">
-                  <a th:href="@{/connexion}" class="dropdown-item">Se connecter</a>
-                </li>
-                <li sec:authorize="isAuthenticated()">
-                  <a th:href="@{/logout?continue}" class="dropdown-item">Déconnexion</a>
-                </li>
-              </ul>
-            </li> <!-- Fin Liste déroulante Utilisateur -->
-          </ul> <!-- Fin Partie droite de la section escamotable -->
+        <!-- Anonyme : bouton Se connecter -->
+        <span sec:authorize="isAnonymous()">
+            <a th:href="@{/connexion}" class="btn btn-sm btn-light fw-bold px-3">
+              <i class="bi bi-person-circle me-1"></i>Se connecter
+            </a>
+          </span> <!-- Fin Anonyme -->
 
-        </div> <!-- Fin Section escamotable de la barre de navigation -->
+        <!-- Authentifié : nom d'utilisateur + bouton Se déconnecter -->
+        <span sec:authorize="isAuthenticated()" class="d-flex align-items-center gap-2">
+            <span class="text-white" style="font-size: 0.9rem;">
+              <i class="bi bi-person-circle me-1"></i>
+              <span sec:authentication="name"></span>
+            </span>
+            <a th:href="@{/logout?continue}" class="btn btn-sm btn-light fw-bold px-3">
+              Se déconnecter
+            </a>
+          </span> <!-- Fin Authentifié -->
 
-      </div> <!-- Fin container-fluid -->
-    </nav> <!-- Fin Barre de navigation -->
-  </header> <!-- Fin Fragment En-tête de page - Barre de naviation -->
+      </div>
+      <!-- ===== FIN BLOC DROITE ===== -->
+
+    </div> <!-- Fin container-fluid -->
+  </nav> <!-- Fin Barre de navigation -->
+</header> <!-- Fin Fragment En-tête de page -->
 
 
   <!--  -->
