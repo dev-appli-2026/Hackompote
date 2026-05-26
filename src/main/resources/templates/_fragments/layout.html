@@ -50,7 +50,7 @@
           <ul class="navbar-nav">
 
             <!-- Liste déroulante Gestion -->
-            <li class="nav-item dropdown" sec:authorize="hasRole('ADMIN')">
+            <li class="nav-item dropdown" sec:authorize="hasRole('Admin')">
               <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Gestion</a>
               <ul class="dropdown-menu">
                 <li>
@@ -60,7 +60,7 @@
             </li> <!-- Fin Liste déroulante Gestion -->
 
             <!-- Item de menu simple -->
-            <li class="nav-item" sec:authorize="hasRole('ADMIN')">
+            <li class="nav-item" sec:authorize="hasRole('Admin')">
               <a th:href="@{/compte/list}" class="nav-link">Comptes</a>
             </li>
 

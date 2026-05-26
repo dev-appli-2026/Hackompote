@@ -4,87 +4,166 @@
 <head th:replace="~{_fragments/layout :: head(${tabTitle})}">
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="../../static/css/styles.css" />
+  <link rel="stylesheet" th:href="@{/css/styles.css}" />
 </head>
+
+<th:block th:replace="~{_fragments/style :: charte}"></th:block>
 
 <body>
 
-  <!-- -->
-  <!-- En-tête de page - barre de navigation -->
-  <!-- -->
-  <header th:replace="~{_fragments/layout :: header }"></header>
+<!-- -->
+<!-- En-tête de page - barre de navigation -->
+<!-- -->
+<header th:replace="~{_fragments/layout :: header }"></header>
 
-  <!-- -->
-  <!-- Contenu de la page -->
-  <!-- -->
-  <section class="container my-3">
+<!-- -->
+<!-- Contenu de la page -->
+<!-- -->
+<section class="container my-5">
 
-    <!-- Rubrique 1 -->
-    <div class="row gy-4">
+  <!-- Titre + accroche -->
+  <div class="text-center mb-5">
+    <h2 class="mb-2" style="color: var(--bs-orange);">Qui sommes-nous ?</h2>
+    <p class="text-muted fst-italic">Une équipe étudiante, un hackathon, une vision.</p>
+  </div>
 
-      <!-- Colonne 1 -->
-      <div class=" col-12 col-md-6 d-flex flex-column justify-content-center">
+  <!-- ===================== -->
+  <!-- Rubrique 1 : Nos valeurs -->
+  <!-- ===================== -->
+  <div class="row gy-4 align-items-center mb-5">
 
-        <!-- Titre en haut de la page -->
-        <h2 class="mb-4 text-center">Qui sommes-nous ?</h2>
+    <!-- Colonne 1 : texte + cartes -->
+    <div class="col-12 col-md-6 d-flex flex-column justify-content-center">
+      <div class="mt-lg-4 mx-auto" style="max-width: 26rem;">
 
-        <!-- Ajustement en largeur -->
-        <div class="mt-lg-4 mx-auto" style="max-width: 26rem;">
+        <h3>Nos valeurs</h3>
+        <p>Hackompote place l'innovation, la collaboration et le dépassement de soi au cœur de chaque hackathon.
+          Nous croyons que les meilleures idées naissent de l'entraide entre des profils variés,
+          dans un esprit de challenge et de bienveillance.</p>
 
-          <h3>Nos valeurs</h3>
-          <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ratione dolore vero natus esse dolorum unde
-            tempore, alias
-            enim quae voluptates veritatis quo eveniet, repellendus nobis pariatur incidunt similique iste eius!</p>
+        <!-- 3 cartes valeurs -->
+        <div class="row g-3 mt-2">
 
-        </div> <!-- Fin Ajustement en largeur -->
+          <div class="col-4">
+            <div class="text-center p-3 rounded" style="background-color: #fff3e0;">
+              <i class="bi bi-lightbulb fs-3" style="color: var(--bs-orange);"></i>
+              <p class="fw-bold mb-1 mt-2" style="font-size: 0.85rem;">Innovation</p>
+              <p class="text-muted mb-0" style="font-size: 0.75rem;">Penser différemment</p>
+            </div>
+          </div>
 
-      </div> <!-- Fin Colonne 1 -->
+          <div class="col-4">
+            <div class="text-center p-3 rounded" style="background-color: #fff3e0;">
+              <i class="bi bi-people fs-3" style="color: var(--bs-orange);"></i>
+              <p class="fw-bold mb-1 mt-2" style="font-size: 0.85rem;">Collaboration</p>
+              <p class="text-muted mb-0" style="font-size: 0.75rem;">Construire ensemble</p>
+            </div>
+          </div>
 
-      <!-- Colonne 2, photo -->
-      <div class="col-12 col-md-6 d-flex align-items-center justify-content-center">
-        <div style=" max-width:25rem;">
-          <img class=" img-fluid " th:src="@{/img/logo.png}">
+          <div class="col-4">
+            <div class="text-center p-3 rounded" style="background-color: #fff3e0;">
+              <i class="bi bi-rocket fs-3" style="color: var(--bs-orange);"></i>
+              <p class="fw-bold mb-1 mt-2" style="font-size: 0.85rem;">Dépassement</p>
+              <p class="text-muted mb-0" style="font-size: 0.75rem; padding-bottom: 17px">Se surpasser</p>
+            </div>
+          </div>
+
         </div>
-      </div> <!-- Fin Colonne 2 -->
+        <!-- Fin cartes valeurs -->
 
-    </div> <!-- Fin Rubrique 1 -->
+      </div>
+    </div>
+    <!-- Fin Colonne 1 -->
 
-    <!-- Rubrique 2 -->
-    <div class="row gy-4 mt-4">
+    <!-- Colonne 2 : photo -->
+    <div class="col-12 col-md-6 d-flex align-items-center justify-content-center">
+      <div style="max-width: 25rem;">
+        <!-- Remplace logo.png par une photo réelle (ex: unsplash "hackathon students") -->
+        <img class="img-fluid rounded" th:src="@{/img/logo.png}" alt="Notre équipe">
+      </div>
+    </div>
+    <!-- Fin Colonne 2 -->
 
-      <!-- Colonne 1 -->
-      <div class=" col-12 col-md-6 order-md-last d-flex flex-column justify-content-center">
+  </div>
+  <!-- Fin Rubrique 1 -->
 
-        <!-- Ajustement en largeur -->
-        <div class="mx-auto" style="max-width: 26rem;">
+  <!-- ===================== -->
+  <!-- Chiffres clés -->
+  <!-- ===================== -->
+  <div class="row g-3 text-center mb-5">
 
-          <h3 class="">Notre histoire</h3>
-          <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ratione dolore vero natus esse dolorum unde
-            tempore, alias
-            enim quae voluptates veritatis quo eveniet, repellendus nobis pariatur incidunt similique iste eius!</p>
+    <div class="col-6 col-md-3">
+      <div class="p-3 rounded" style="background-color: #fff3e0;">
+        <p class="fw-bold mb-1" style="font-size: 2rem; color: var(--bs-orange);">2026</p>
+        <p class="text-muted mb-0" style="font-size: 0.85rem;">Année de création</p>
+      </div>
+    </div>
 
-        </div> <!-- Fin Ajustement en largeur -->
+    <div class="col-6 col-md-3">
+      <div class="p-3 rounded" style="background-color: #fff3e0;">
+        <p class="fw-bold mb-1" style="font-size: 2rem; color: var(--bs-orange);">24h</p>
+        <p class="text-muted mb-0" style="font-size: 0.85rem;">De compétition</p>
+      </div>
+    </div>
 
-      </div> <!-- Fin Colonne 1 -->
+    <div class="col-6 col-md-3">
+      <div class="p-3 rounded" style="background-color: #fff3e0;">
+        <!-- Remplace X par le vrai nombre d'équipes -->
+        <p class="fw-bold mb-1" style="font-size: 2rem; color: var(--bs-orange);">0</p>
+        <p class="text-muted mb-0" style="font-size: 0.85rem;">Équipes participantes</p>
+      </div>
+    </div>
 
-      <!-- Colonne 2, photo -->
-      <div class="col-12 col-md-6 d-flex align-items-center justify-content-center">
-        <div style=" max-width:25rem;">
-          <img class="img-fluid" th:src="@{/img/logo.png}">
-        </div>
-      </div> <!-- Fin Colonne 2 -->
+    <div class="col-6 col-md-3">
+      <div class="p-3 rounded" style="background-color: #fff3e0;">
+        <p class="fw-bold mb-1" style="font-size: 2rem; color: var(--bs-orange);">3iL</p>
+        <p class="text-muted mb-0" style="font-size: 0.85rem;">Limoges</p>
+      </div>
+    </div>
 
-    </div> <!-- Fin Rubrique 2 -->
+  </div>
+  <!-- Fin chiffres clés -->
 
-  </section> <!-- Fin Contenu de la page -->
+  <!-- ===================== -->
+  <!-- Rubrique 2 : Notre histoire -->
+  <!-- ===================== -->
+  <div class="row gy-4 mt-4">
 
-  <!-- -->
-  <!-- Pied de page -->
-  <!-- -->
-  <footer th:replace="~{_fragments/layout :: footer}"></footer>
+    <!-- Colonne 1 : texte -->
+    <div class="col-12 col-md-6 order-md-last d-flex flex-column justify-content-center">
+      <div class="mx-auto" style="max-width: 26rem;">
 
-  <!-- Scripts définis dans le layout -->
-  <th:block th:replace="~{_fragments/layout :: bottom-scripts}"></th:block>
+        <h3>Notre histoire</h3>
+        <p>Née d'une initiative étudiante à l'école 3iL de Limoges, Hackompote a vu le jour en 2026 avec
+          une idée simple : rassembler des développeurs passionnés autour de défis créatifs.</p>
+        <p>Depuis, chaque édition repousse les limites du possible, une ligne de code à la fois.</p>
+
+      </div>
+    </div>
+    <!-- Fin Colonne 1 -->
+
+    <!-- Colonne 2 : photo -->
+    <div class="col-12 col-md-6 d-flex align-items-center justify-content-center">
+      <div style="max-width: 25rem;">
+        <!-- Remplace logo.png par une photo réelle (ex: pexels "team coding") -->
+        <img class="img-fluid rounded" th:src="@{/img/logo.png}" alt="Notre histoire">
+      </div>
+    </div>
+    <!-- Fin Colonne 2 -->
+
+  </div>
+  <!-- Fin Rubrique 2 -->
+
+</section>
+<!-- Fin Contenu de la page -->
+
+<!-- -->
+<!-- Pied de page -->
+<!-- -->
+<footer th:replace="~{_fragments/layout :: footer}"></footer>
+
+<!-- Scripts définis dans le layout -->
+<th:block th:replace="~{_fragments/layout :: bottom-scripts}"></th:block>
 
 </body>
 
