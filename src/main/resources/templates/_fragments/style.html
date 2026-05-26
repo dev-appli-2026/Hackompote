@@ -1,65 +1,96 @@
+<!--
+PALETTE DE COULEURS
+
+#FF5900 Orange vif
+#FF8237 Orange clair
+#FFAA6E Orange pastel
+#FFD3A5 Sable
+#FFFBDC Crème
+#FFFFFF Blanc
+#2C2417 Brun foncé
+#6B4C2A Brun moyen
+-->
+
 <th:block th:fragment="charte">
     <style>
 
-        /* Fond de page */
+        /* VARIABLES */
+
+        :root {
+            --hk-orange:       #FF5900;
+            --hk-orange-hover: #FF8237;
+            --hk-orange-soft:  #FFAA6E;
+            --hk-sand:         #FFD3A5;
+            --hk-cream:        #FFFBDC;
+            --hk-text:         #2C2417;
+            --hk-text-muted:   #6B4C2A;
+        }
+
+        /* FOND DE PAGE */
 
         body {
-            background-color: #FFFBDC;
+            background-color: var(--hk-cream);
+            color: var(--hk-text);
         }
 
 
-        /* Titres */
+        /* TITRES */
 
         h1 {
-            color: #FF5900;
+            color: var(--hk-orange);
         }
 
         h2 {
-            color: #FF5900;
+            color: var(--hk-text);
+        }
+
+        h3 {
+            color: var(--hk-text-muted);
+            font-size: 1.1rem;
         }
 
 
-        /* Pour les form */
+        /* FORMULAIRES */
 
-        /* label */
+        /* Label au-dessus d'un champ */
         .form-label,
         .col-form-label {
-            color: #FF5900;
+            color: var(--hk-orange);
             font-weight: 500;
         }
 
-        /* input, textarea */
+        /* Champs de saisie : input, textarea */
         .form-control {
-            background-color: #FFFBDC;
-            border: 1.5px solid #FFAA6E;
-            color: #333;
+            background-color: var(--hk-cream);
+            border: 1.5px solid var(--hk-orange-soft);
+            color: var(--hk-text);
         }
 
-        /* focus */
+        /* Champ de saisie au focus (quand on clique dedans) */
         .form-control:focus {
-            border-color: #FF5900;
-            box-shadow: 0 0 0 0.2rem rgba(255, 89, 0, 0.25);
-            background-color: #FFFBDC;
+            border-color: var(--hk-orange);
+            box-shadow: 0 0 0 0.2rem rgba(255, 89, 0, 0.2);
+            background-color: #fff;
         }
 
-        /* Champ de dépôt de fichier */
+        /* Champ de dépôt de fichier (input type="file") */
         .form-control[type="file"] {
-            background-color: #FFFBDC;
-            border: 1.5px solid #FFAA6E;
-            color: #333;
+            background-color: var(--hk-cream);
+            border: 1.5px solid var(--hk-orange-soft);
+            color: var(--hk-text);
             cursor: pointer;
         }
 
         .form-control[type="file"]:focus {
-            border-color: #FF5900;
-            box-shadow: 0 0 0 0.2rem rgba(255, 89, 0, 0.25);
+            border-color: var(--hk-orange);
+            box-shadow: 0 0 0 0.2rem rgba(255, 89, 0, 0.2);
         }
 
         /* Bouton "Parcourir" intégré au champ fichier */
         .form-control[type="file"]::file-selector-button {
-            background-color: #FF5900;
+            background-color: var(--hk-orange);
             border: none;
-            border-right: 1.5px solid #FFAA6E;
+            border-right: 1.5px solid var(--hk-orange-soft);
             color: #fff;
             padding: 0.375rem 0.75rem;
             margin-right: 0.75rem;
@@ -68,65 +99,65 @@
         }
 
         .form-control[type="file"]::file-selector-button:hover {
-            background-color: #FF8237;
+            background-color: var(--hk-orange-hover);
         }
 
-        /* Liste déroulante */
+        /* Liste déroulante <select> */
         .form-select {
-            background-color: #FFFBDC;
-            border: 1.5px solid #FFAA6E;
-            color: #333;
+            background-color: var(--hk-cream);
+            border: 1.5px solid var(--hk-orange-soft);
+            color: var(--hk-text);
         }
 
         .form-select:focus {
-            border-color: #FF5900;
-            box-shadow: 0 0 0 0.2rem rgba(255, 89, 0, 0.25);
+            border-color: var(--hk-orange);
+            box-shadow: 0 0 0 0.2rem rgba(255, 89, 0, 0.2);
         }
 
         /* Case à cocher */
         .form-check-input {
-            border-color: #FFAA6E;
+            border-color: var(--hk-orange-soft);
             cursor: pointer;
         }
 
         .form-check-input:checked {
-            background-color: #FF5900;
-            border-color: #FF5900;
+            background-color: var(--hk-orange);
+            border-color: var(--hk-orange);
         }
 
         .form-check-input:focus {
-            border-color: #FF5900;
-            box-shadow: 0 0 0 0.2rem rgba(255, 89, 0, 0.25);
+            border-color: var(--hk-orange);
+            box-shadow: 0 0 0 0.2rem rgba(255, 89, 0, 0.2);
         }
 
         /* Label de la case à cocher */
         .form-check-label {
-            color: #FF5900;
+            color: var(--hk-orange);
             font-weight: 500;
             cursor: pointer;
         }
 
         /* Texte fixe collé à un input (ex: bouton œil du mot de passe) */
         .input-group-text {
-            background-color: #FFFBDC;
-            border: 1.5px solid #FFAA6E;
-            color: #FF5900;
+            background-color: var(--hk-cream);
+            border: 1.5px solid var(--hk-orange-soft);
+            color: var(--hk-orange);
         }
 
 
-        /* Boutons */
+        /* BOUTONS */
 
         /* Bouton principal : action importante (Se connecter, Enregistrer…) */
         .btn-primary {
-            background-color: #FF5900;
-            border-color: #FF5900;
+            background-color: var(--hk-orange);
+            border-color: var(--hk-orange);
             color: #fff;
         }
 
         .btn-primary:hover,
         .btn-primary:focus {
-            background-color: #FF8237;
-            border-color: #FF8237;
+            background-color: var(--hk-orange-hover);
+            border-color: var(--hk-orange-hover);
             color: #fff;
         }
 
@@ -134,77 +165,94 @@
         a.btn-primary,
         a.btn-primary:link,
         a.btn-primary:visited {
-            background-color: #FF5900;
-            border-color: #FF5900;
+            background-color: var(--hk-orange);
+            border-color: var(--hk-orange);
             color: #fff !important;
             text-decoration: none;
         }
 
         a.btn-primary:hover,
         a.btn-primary:focus {
-            background-color: #FF8237;
-            border-color: #FF8237;
+            background-color: var(--hk-orange-hover);
+            border-color: var(--hk-orange-hover);
             color: #fff !important;
         }
 
         /* Bouton secondaire : action neutre (Annuler, Retour…) */
         .btn-secondary {
-            background-color: #FFAA6E;
-            border-color: #FFAA6E;
+            background-color: var(--hk-orange-soft);
+            border-color: var(--hk-orange-soft);
             color: #fff;
         }
 
         .btn-secondary:hover,
         .btn-secondary:focus {
-            background-color: #FF8237;
-            border-color: #FF8237;
+            background-color: var(--hk-orange-hover);
+            border-color: var(--hk-orange-hover);
             color: #fff;
+        }
+
+        /* Bouton secondaire sur un <a> */
+        a.btn-secondary,
+        a.btn-secondary:link,
+        a.btn-secondary:visited {
+            background-color: var(--hk-orange-soft);
+            border-color: var(--hk-orange-soft);
+            color: #fff !important;
+            text-decoration: none;
+        }
+
+        a.btn-secondary:hover,
+        a.btn-secondary:focus {
+            background-color: var(--hk-orange-hover);
+            border-color: var(--hk-orange-hover);
+            color: #fff !important;
         }
 
         /* Bouton lien (invisible, juste du texte cliquable) */
         .btn-link {
-            color: #FF5900;
+            color: var(--hk-orange);
         }
 
         .btn-link:hover {
-            color: #FF8237;
+            color: var(--hk-orange-hover);
         }
 
 
-        /* Card */
+        /* CARDS */
 
         .card {
-            background-color: #FFD3A5;
-            border: 1.5px solid #FFAA6E;
+            background-color: var(--hk-sand);
+            border: 1.5px solid var(--hk-orange-soft);
         }
 
-        /* En-tête d'une card */
+        /* En-tête d'une card (optionnel) */
         .card-header {
-            background-color: #FFAA6E;
-            border-bottom: 1.5px solid #FF5900;
+            background-color: var(--hk-orange-soft);
+            border-bottom: 1.5px solid var(--hk-orange);
             color: #fff;
             font-weight: 600;
         }
 
-        /* Pied d'une card */
+        /* Pied d'une card (optionnel) */
         .card-footer {
-            background-color: #FFD3A5;
-            border-top: 1.5px solid #FFAA6E;
+            background-color: var(--hk-sand);
+            border-top: 1.5px solid var(--hk-orange-soft);
         }
 
 
-        /* Tableau */
+        /* TABLEAUX */
 
-        /* En-tête du tableau */
+        /* En-tête du tableau (ligne <thead>) */
         .table thead th {
-            background-color: #FF5900;
+            background-color: var(--hk-orange);
             color: #fff;
-            border-color: #FF8237;
+            border-color: var(--hk-orange-hover);
         }
 
         /* Lignes du corps du tableau */
         .table tbody tr:hover {
-            background-color: #FFD3A5;
+            background-color: var(--hk-sand);
         }
 
         /* Tableau avec fond rayé */
@@ -214,53 +262,53 @@
 
         /* Bordures du tableau */
         .table-bordered > :not(caption) > * > * {
-            border-color: #FFAA6E;
+            border-color: var(--hk-orange-soft);
         }
 
 
-        /* Alertes */
+        /* ALERTES */
 
         .alert-primary {
-            background-color: #FFD3A5;
-            border-color: #FFAA6E;
-            color: #FF5900;
+            background-color: var(--hk-sand);
+            border-color: var(--hk-orange-soft);
+            color: var(--hk-orange);
         }
 
 
-        /* Pagination */
+        /* PAGINATION */
 
         /* Page active (page courante) */
         .page-item.active .page-link {
-            background-color: #FF5900;
-            border-color: #FF5900;
+            background-color: var(--hk-orange);
+            border-color: var(--hk-orange);
             color: #fff;
         }
 
         /* Lien de page normal */
         .page-link {
-            color: #FF5900;
-            border-color: #FFAA6E;
+            color: var(--hk-orange);
+            border-color: var(--hk-orange-soft);
         }
 
         .page-link:hover {
-            background-color: #FFD3A5;
-            border-color: #FFAA6E;
-            color: #FF5900;
+            background-color: var(--hk-sand);
+            border-color: var(--hk-orange-soft);
+            color: var(--hk-orange);
         }
 
         /* Page désactivée (flèche grisée) */
         .page-item.disabled .page-link {
-            color: #FFAA6E;
-            border-color: #FFAA6E;
-            background-color: #FFFBDC;
+            color: var(--hk-orange-soft);
+            border-color: var(--hk-orange-soft);
+            background-color: var(--hk-cream);
         }
 
 
-        /* Navbar */
+        /* NAVBAR */
 
         /* Fond de la barre de navigation */
         .navbar.bg-dark {
-            background-color: #FF5900 !important;
+            background-color: var(--hk-orange) !important;
         }
 
         /* Liens de navigation */
@@ -270,7 +318,7 @@
 
         .navbar-dark .navbar-nav .nav-link:hover,
         .navbar-dark .navbar-nav .nav-link:focus {
-            color: #FFFBDC;
+            color: #fff;
         }
 
         /* Nom du site (brand) */
@@ -280,49 +328,49 @@
         }
 
         .navbar-dark .navbar-brand:hover {
-            color: #FFFBDC;
+            color: var(--hk-cream);
         }
 
         /* Menu déroulant dans la navbar */
         .navbar-dark .dropdown-menu {
-            background-color: #FFFBDC;
-            border: 1.5px solid #FFAA6E;
+            background-color: var(--hk-cream);
+            border: 1.5px solid var(--hk-orange-soft);
         }
 
         .navbar-dark .dropdown-menu .dropdown-item {
-            color: #FF5900;
+            color: var(--hk-text);
         }
 
         .navbar-dark .dropdown-menu .dropdown-item:hover,
         .navbar-dark .dropdown-menu .dropdown-item:focus {
-            background-color: #FFD3A5;
-            color: #FF5900;
+            background-color: var(--hk-sand);
+            color: var(--hk-orange);
         }
 
 
-        /* Fenêtres modales */
+        /* FENETRES MODALES */
 
         .modal-header {
-            background-color: #FF5900;
+            background-color: var(--hk-orange);
             color: #fff;
             border-bottom: none;
         }
 
         .modal-content {
-            border: 1.5px solid #FFAA6E;
-            background-color: #FFFBDC;
+            border: 1.5px solid var(--hk-orange-soft);
+            background-color: var(--hk-cream);
         }
 
         .modal-footer {
-            background-color: #FFD3A5;
-            border-top: 1.5px solid #FFAA6E;
+            background-color: var(--hk-sand);
+            border-top: 1.5px solid var(--hk-orange-soft);
         }
 
 
-        /* Footer */
+        /* FOOTER */
 
         footer.bg-secondary {
-            background-color: #FF5900 !important;
+            background-color: var(--hk-orange) !important;
             color: #fff;
         }
 
