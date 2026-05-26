@@ -7,6 +7,9 @@
   <link rel="stylesheet" href="../../static/css/styles.css" />
 </head>
 
+<!-- Charte graphique personnalisée Hackompote -->
+<th:block th:replace="~{_fragments/style :: charte}"></th:block>
+
 <body>
 
   <!-- -->
@@ -17,30 +20,40 @@
   <!-- -->
   <!-- Contenu de la page -->
   <!-- -->
-  <section class="container my-3">
 
-    <h1 class="text-center">Hackathon</h1>
+  <main class="d-flex justify-content-center flex-column py-5" style="min-height: calc(100vh - 56px - 80px);">
 
-<!-----------------TODO Faire l'affichage mosaique des evenements------------->
-    <table>
-      <thead>
-      <tr>
-        <th>ID</th>
-        <th>Nom</th>
-      </tr>
-      </thead>
-      <tbody>
-      <tr th:each="evenement : ${evenement}">
-        <td th:text="${evenement.idEvenement}"></td>
-        <td th:text="${evenement.nom}"></td>
-      </tr>
-      </tbody>
-    </table>
-<!------------------------------------------------------------------------------->
+    <div class="d-flex flex-row justify-content-between align-items-baseline mb-4"
+         style="width: 100%; max-width: 420px;">
+      <h1 class="fw-bold mb-0 m-4">Évènements à venir</h1>
+    </div>
 
-    <br><br><br>
+    <div class="d-flex flex-row flex-wrap justify-content-center align-items-center gap-3">
+      <div th:each="evenement : ${evenement}" class="card shadow-sm rounded-4 p-4 flex mx-2" style="width: 520px; height: 320px;">
+        <div class="mb-2" style="height: 160px; background-color: #fff; border-radius: 1rem;"></div>
+        <h2 th:text="${evenement.nom}" class="row fw-bold mb-2"></h2>
+        <h3 th:text="${evenement.localisationGeo}" class="row px-3"></h3>
+        <div class="row">
+          <h3 class="col px-3" th:text="${evenement.dateDebut}"></h3>
+          <h3 class="col px-3 text-end">x participants</h3>
+        </div>
+      </div>
+    </div>
 
-  </section> <!-- Fin Contenu de la page -->
+    <div class="d-flex flex-row justify-content-between align-items-baseline mb-4"
+         style="width: 100%; max-width: 420px;">
+      <h1 class="fw-bold mb-0 m-4">Évènements passés</h1>
+    </div>
+
+    <div class="card shadow-sm rounded-4 p-4 d-flex flex-row flex-wrap gap-5 mx-4 justify-content-center">
+      <div th:each="evenement : ${evenement}" style="width: 220px; height: 220px;">
+        <h2 th:text="${evenement.nom}" class="fw-bold mb-2"></h2>
+        <h3 th:text="${evenement.localisationGeo}" class="mb-1 fs-6"></h3>
+        <h3 th:text="${evenement.dateDebut}" class="text-muted small"></h3>
+      </div>
+    </div>
+
+  </main>
 
   <!-- -->
   <!-- Pied de page -->
