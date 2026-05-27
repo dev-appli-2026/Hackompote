@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping("/evenement") //TODO a vérifier
+@RequestMapping("/evenement")
 public class EvenementController {
 
     private final EvenementService evenementService;
@@ -20,12 +20,17 @@ public class EvenementController {
         this.evenementService = evenementService;
     }
 
+    @GetMapping
+    public String afficherPages() {
+        return "public/evenement.html";
+    }
+
     @GetMapping("/creation")
-    public String afficherFormulaire(Model model) { //TODO tout a faire
+    public String afficherFormulaire(Model model) {
         if (!model.containsAttribute("creationEvenementForm")) {
             model.addAttribute("creationEvenementForm", new CreationEvenementForm());
         }
-        return "public/creation/creation-evenement.html"; //TODO route a faire
+        return "public/creation/creation-evenement.html";
     }
 
     @PostMapping
