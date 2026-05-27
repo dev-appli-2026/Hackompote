@@ -16,6 +16,7 @@ CREATE TABLE Utilisateur (
     adresse_mail    VARCHAR(255) NOT NULL UNIQUE,
     mot_de_passe    VARCHAR(255) NOT NULL,
     role            VARCHAR(50) NOT NULL CHECK (role IN ('Participant', 'Mentor', 'Jury', 'Admin')),
+    id_equipe       INT,
     lien_cv         VARCHAR(255),
     competences_cles    TEXT,
     statut_recherche    BOOLEAN DEFAULT TRUE
@@ -81,14 +82,6 @@ CREATE TABLE Inscription_Evenement (
     PRIMARY KEY (id_evenement, id_utilisateur),
     CONSTRAINT fk_insc_evenement    FOREIGN KEY (id_evenement)   REFERENCES Evenement(id_evenement),
     CONSTRAINT fk_insc_utilisateur  FOREIGN KEY (id_utilisateur) REFERENCES Utilisateur(id_utilisateur)
-);
-
-CREATE TABLE Composer_Equipe (
-    id_equipe       INT,
-    id_utilisateur  INT,
-    PRIMARY KEY (id_equipe, id_utilisateur),
-    CONSTRAINT fk_compo_equipe      FOREIGN KEY (id_equipe)      REFERENCES Equipe(id_equipe),
-    CONSTRAINT fk_compo_utilisateur FOREIGN KEY (id_utilisateur) REFERENCES Utilisateur(id_utilisateur)
 );
 
 -- ==========================================
