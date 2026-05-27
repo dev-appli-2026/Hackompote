@@ -30,7 +30,7 @@
     <div class="container-fluid">
 
       <!-- ===== BLOC GAUCHE : logo + liens de navigation (fond orange) ===== -->
-      <div class="d-flex align-items-center rounded px-3 py-2" style="background-color: var(--bs-orange);">
+      <div class="d-flex align-items-center rounded px-3 py-2" style="background-color: var(--hk-orange);">
 
         <!-- Logo et nom du site -->
         <a class="navbar-brand me-3" th:href="@{/}">
@@ -62,6 +62,15 @@
             <li class="nav-item">
               <a th:href="@{/}" class="nav-link text-white">Accueil</a>
             </li>
+            <li class="nav-item dropdown">
+              <a href="#" class="nav-link text-white dropdown-toggle" data-bs-toggle="dropdown">Hackathon</a>
+
+              <ul class="dropdown-menu">
+                <li><a href="#" class="dropdown-item">Liste</a></li>
+                <li><a href="#" class="dropdown-item">Equipes</a></li>
+              </ul>
+            </li>
+
             <li class="nav-item">
               <a th:href="@{/qui-sommes-nous}" class="nav-link text-white">Qui sommes-nous ?</a>
             </li>
@@ -77,7 +86,7 @@
       <!-- ===== FIN BLOC GAUCHE ===== -->
 
       <!-- ===== BLOC DROITE : boutons connexion / déconnexion (fond orange) ===== -->
-      <div class="d-flex align-items-center rounded px-3 py-2" style="background-color: var(--bs-orange);">
+      <div class="d-flex align-items-center rounded px-3 py-2" style="background-color: var(--hk-orange);">
 
         <!-- Anonyme : bouton Se connecter -->
         <span sec:authorize="isAnonymous()">
@@ -119,6 +128,21 @@
   <!--  -->
   <th:block th:fragment="bottom-scripts">
     <script th:src="@{/lib/bootstrap/bootstrap.bundle.min.js}"></script>
+    <script>
+      (function () {
+        var header = document.querySelector('header.sticky-top');
+        var lastY = 0;
+        window.addEventListener('scroll', function () {
+          var y = window.scrollY;
+          if (y > lastY && y > header.offsetHeight) {
+            header.classList.add('navbar-hidden');
+          } else {
+            header.classList.remove('navbar-hidden');
+          }
+          lastY = y;
+        }, { passive: true });
+      })();
+    </script>
   </th:block> <!-- Fin Fragment Scripts définis dans le layout -->
 
 </body>
