@@ -30,7 +30,6 @@ public class SqlScriptRunner implements CommandLineRunner {
                 "db/sql/script/10_sujets.sql",
                 "db/sql/script/8_equipes.sql",
                 "db/sql/script/12_inscription-evenement.sql",
-                "db/sql/script/16_composer-equipe.sql",
                 "db/sql/script/6_sponsor.sql",
                 "db/sql/script/10_obtenir-badge.sql",
                 "db/sql/script/8_rdv-mentor.sql",
