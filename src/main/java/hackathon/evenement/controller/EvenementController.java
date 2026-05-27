@@ -19,12 +19,6 @@ public class EvenementController {
     public EvenementController(EvenementService evenementService) {
         this.evenementService = evenementService;
     }
-//
-//    @GetMapping("/")
-//    public String afficherEvenement(Model model) {
-//        model.addAttribute("evenement", evenementService.getEvenementsPublie(3, "Publié"));
-//        return "public/accueil.html";
-//    }
 
     @GetMapping("/creation")
     public String afficherFormulaire(Model model) { //TODO tout a faire

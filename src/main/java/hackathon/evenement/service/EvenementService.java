@@ -42,4 +42,9 @@ public class EvenementService {
     public List<Evenement> getEvenementsPublie(int n, String etat) {
         return evenementRepository.findAllByStatutEventOrderByDateDebutAsc(etat,PageRequest.of(0, n));
     }
+
+    // Return les n événements qui sont dans l'etat statu dans l'ordre Desc sur la date de début
+    public List<Evenement> getEvenementsPasse(int n, String etat) {
+        return evenementRepository.findAllByStatutEventOrderByDateDebutAsc(etat,PageRequest.of(0, n));
+    }
 }

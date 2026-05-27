@@ -52,7 +52,8 @@ public class AccueilController {
 			session.setAttribute( SPRING_SECURITY_CONTEXT_KEY, sc );
 		}
 
-		model.addAttribute("evenement", evenementService.getEvenementsPublie(3, "Publié"));
+		model.addAttribute("evenementFutur", evenementService.getEvenementsPublie(3, "Publié"));
+		model.addAttribute("evenementPasse", evenementService.getEvenementsPasse(5, "Clôturé"));
 		autoConnect = false;
 
 		return "public/accueil.html";
