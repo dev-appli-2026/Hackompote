@@ -1,13 +1,15 @@
-package hackathon.home;
+package hackathon.accueil;
 
 import static org.springframework.security.web.context.HttpSessionSecurityContextRepository.SPRING_SECURITY_CONTEXT_KEY;
 
+import hackathon.evenement.service.EvenementService;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContext;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.web.authentication.RememberMeServices;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 import jakarta.servlet.http.HttpServletRequest;
@@ -16,7 +18,7 @@ import lombok.RequiredArgsConstructor;
 
 @Controller
 @RequiredArgsConstructor
-public class HomeController {
+public class AccueilController {
 
 	// -------
 	// Champs
@@ -24,6 +26,7 @@ public class HomeController {
 
 	private final UserDetailsService	userDetailsService;
 	private final RememberMeServices	rememberMeServices;
+	private final EvenementService evenementService;
 
 	private boolean autoConnect = true; // true -> active l'autoconnexion
 
@@ -35,22 +38,24 @@ public class HomeController {
 	// home()
 
 	@GetMapping( "/" )
-	public String home( HttpServletRequest request, HttpServletResponse response ) {
+	public String accueil(HttpServletRequest request, HttpServletResponse response, Model model) {
 
 		// Connexion automatique avec le compe admin
 		var	session	= request.getSession( true );
 		var	sc		= (SecurityContext) session.getAttribute( SPRING_SECURITY_CONTEXT_KEY );
 		if ( sc == null && autoConnect ) {
-			var	userDetails	= userDetailsService.loadUserByUsername( "admin" );
-			var	authReq		= new UsernamePasswordAuthenticationToken( userDetails, null,
-					userDetails.getAuthorities() );
+			var	userDetails	= userDetailsService.loadUserByUsername( "Admin" );
+			var	authReq		= new UsernamePasswordAuthenticationToken( userDetails, null, userDetails.getAuthorities() );
 			rememberMeServices.loginSuccess( request, response, authReq );
 			sc = SecurityContextHolder.getContext();
 			sc.setAuthentication( authReq );
 			session.setAttribute( SPRING_SECURITY_CONTEXT_KEY, sc );
 		}
 
+		model.addAttribute("evenementFutur", evenementService.getEvenementsPublie(3, "Publié"));
+		model.addAttribute("evenementPasse", evenementService.getEvenementsPasse(5, "Clôturé"));
 		autoConnect = false;
+
 		return "public/accueil.html";
 	}
 
