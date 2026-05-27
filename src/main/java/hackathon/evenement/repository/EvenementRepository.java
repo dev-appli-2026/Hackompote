@@ -21,4 +21,6 @@ public interface EvenementRepository extends CrudRepository<Evenement, Long> {
     // Requete pour avoir les n evenment les plus proches dans l'ordre décroissant
     List<Evenement> findAllByStatutEventOrderByDateDebutDesc(String statut, Pageable pageable);
 
+    // Requete pour avoir les n evenment les plus proches dans l'ordre décroissant
+    List<Evenement> findAllByOrderByDateDebutAsc();
 }
