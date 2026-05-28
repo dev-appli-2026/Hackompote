@@ -21,9 +21,48 @@
 <!-- Contenu de la page -->
 <!-- -->
 
-<main class="d-flex justify-content-center flex-column py-5" style="min-height: calc(100vh - 56px - 80px);">
+<main class="d-flex justify-content-center flex-column py-5"
+      style="min-height: calc(100vh - 56px - 80px);">
 
-    <p>Page evenement</p>
+    <!-- Barre de recherche -->
+    <div class="d-flex justify-content-center px-4 mb-5">
+        <div class="input-group" style="max-width: 800px;">
+            <input type="search" class="form-control" placeholder="Rechercher...">
+            <button type="submit" class="btn btn-primary">
+                <i class="bi-search"></i>
+            </button>
+        </div>
+    </div>
+
+    <div class="d-flex flex-row justify-content-between align-items-baseline mb-4"
+         style="width: 100%;">
+        <h1 class="fw-bold mb-0 m-4">Tous les évènements</h1>
+    </div>
+
+    <div class="d-flex flex-wrap justify-content-center gap-4 px-4">
+
+        <div th:each="evenement : ${allEvenement}">
+            <div class="card shadow-sm rounded-4 p-4 mx-5 my-2" style="width: 620px; height: 320px;">
+                <div class="row g-0 h-100">
+
+                    <!-- Placeholder image -->
+                    <div class="col">
+                        <div style="height: 100%; background-color: #fff; border-radius: 1rem;"></div>
+                    </div>
+
+                    <!-- Contenu texte -->
+                    <div class="col ps-3 d-flex flex-column justify-content-center overflow-hidden">
+                        <h1 th:text="${evenement.nom}" class="fw-bold mb-2"></h1>
+                        <h2 th:text="${evenement.localisationGeo}" class=""></h2>
+                        <h3 th:text="${evenement.dateDebut}" class="mb-2"></h3>
+                        <h3 class="fs-6">x participants</h3>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
 
 </main>
 
