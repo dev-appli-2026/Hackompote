@@ -25,7 +25,7 @@
 
     <div class="col-7 p-4" style="min-width: 300px;">
       <div class="card shadow-sm rounded-4 p-4">
-        <h1 class="row fw-bold mb-2">Nom de l'Équipe</h1>
+        <h1 th:text="${Equipe.nomEquipe}" class="row fw-bold mb-2"></h1>
         <h2 th:text="${MentorEquipe.prenom}" class="mb-1"></h2>
         <h2 th:text="${MentorEquipe.nom}" class="mb-5"></h2>
         <h3>Liste des membres</h3>
@@ -49,7 +49,7 @@
 <!--         Ligne pseudo + bouton-->
         <div th:each="utilisateur : ${ListeUtilisateurSansEquipe}" class="row mx-1 align-items-center">
           <div class="col">
-            <h3 th:text="${utilisateur.nom}"></h3>
+            <h3 th:text="${utilisateur.pseudo}"></h3>
           </div>
           <div class="col-auto">
             <button class="btn btn-primary rounded-3 mb-3 px-3">+</button>

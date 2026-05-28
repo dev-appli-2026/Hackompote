@@ -49,4 +49,9 @@ public class EquipeService {
     public Utilisateur getMentorEquipe(int idEquipe) {
         return utilisateurRepository.findAllByIdEquipeAndRole(idEquipe,"Mentor");
     }
+
+    public Equipe getEquipe(int idEquipe) {
+        return equipeRepository.findByIdEquipe(idEquipe);
+    }
+
 }

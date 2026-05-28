@@ -26,6 +26,7 @@ public class EquipeController {
         model.addAttribute("ListeUtilisateurSansEquipe", equipeService.getUtilisateurInEquipe(0));
         model.addAttribute("ListeUtilisateurEquipe", equipeService.getUtilisateurInEquipe(numEquipe));
         model.addAttribute("MentorEquipe", equipeService.getMentorEquipe(numEquipe));
+        model.addAttribute("Equipe", equipeService.getEquipe(numEquipe));
         return "public/creation/creation-equipe.html";
     }
 }

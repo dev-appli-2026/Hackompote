@@ -9,5 +9,6 @@ import java.util.List;
 
 public interface EquipeRepository extends CrudRepository<Equipe, Long> {
 
+    Equipe findByIdEquipe(int idEquipe);
 
 }
