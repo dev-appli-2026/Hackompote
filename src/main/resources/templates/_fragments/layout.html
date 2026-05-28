@@ -12,7 +12,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <link rel="icon" type="image/x-icon" th:href="@{/img/favicon.png}" />
-  <title th:text="(${! #strings.isEmpty(titre)} ?  ${titre} + ' - ' : '' ) + 'Hackathon'">Hackathon</title>
+  <title th:text="(${! #strings.isEmpty(titre)} ?  ${titre} + ' - ' : '' ) + 'Hackathon'">Hackompote</title>
   <link rel="stylesheet" th:href="@{/css/styles.css}" />
   <script th:src="@{/lib/jquery/jquery.min.js}"></script>
 </head> <!-- Fin Fragment Head -->
@@ -63,7 +63,7 @@
               <a th:href="@{/}" class="nav-link text-white">Accueil</a>
             </li>
             <li class="nav-item dropdown">
-              <a th:href="@{/}" class="nav-link text-white dropdown-toggle" data-bs-toggle="dropdown">Hackompote</a>
+              <a th:href="@{/}" class="nav-link text-white dropdown-toggle" data-bs-toggle="dropdown">Hackathon</a>
 
               <ul class="dropdown-menu">
                 <li><a th:href="@{/evenement}" class="dropdown-item">Liste</a></li>
