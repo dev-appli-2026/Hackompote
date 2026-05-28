@@ -34,25 +34,34 @@
         </div>
     </div>
 
-    <div class="d-flex flex-wrap justify-content-center align-items-center px-4">
-        <div class="card w-100 p-4 card shadow-sm rounded-4 mb-5" style="max-width: 800px;">
-            <div class="row gap-3">
+    <div class="d-flex flex-row justify-content-between align-items-baseline mb-4"
+         style="width: 100%;">
+        <h1 class="fw-bold mb-0 m-4">Tous les évènements</h1>
+    </div>
 
-                <div class="col-5 align-content-center">
-                    <div class="" style="height: 100%; background-color: #fff; border-radius: 1rem;"></div>
-                </div>
+    <div class="d-flex flex-wrap justify-content-center gap-4 px-4">
 
-                <div th:each="evenement : ${allEvenement}" class="card shadow-sm rounded-4 p-4 flex mx-2" style="width: 520px; height: 320px;">
-                    <div class="col align-content-center">
-                        <h1 th:text="${evenement.nom}" ></h1>
-                        <h2 th:text="${evenement.localisationGeo}"></h2>
-                        <h3 th:text="${evenement.dateDebut}" class="mb-5"></h3>
-                        <h3>x participants</h3>
+        <div th:each="evenement : ${allEvenement}">
+            <div class="card shadow-sm rounded-4 p-4 mx-5 my-2" style="width: 620px; height: 320px;">
+                <div class="row g-0 h-100">
+
+                    <!-- Placeholder image -->
+                    <div class="col">
+                        <div style="height: 100%; background-color: #fff; border-radius: 1rem;"></div>
                     </div>
-                </div>
 
+                    <!-- Contenu texte -->
+                    <div class="col ps-3 d-flex flex-column justify-content-center overflow-hidden">
+                        <h1 th:text="${evenement.nom}" class="fw-bold mb-2"></h1>
+                        <h2 th:text="${evenement.localisationGeo}" class=""></h2>
+                        <h3 th:text="${evenement.dateDebut}" class="mb-2"></h3>
+                        <h3 class="fs-6">x participants</h3>
+                    </div>
+
+                </div>
             </div>
         </div>
+
     </div>
 
 </main>
