@@ -1,7 +1,7 @@
 package hackathon.equipe.controller;
 
-import hackathon.evenement.dto.CreationEvenementForm;
-import hackathon.evenement.service.EvenementService;
+import hackathon.equipe.dto.CreationEquipeForm;
+import hackathon.equipe.service.EquipeService;
 import jakarta.validation.Valid;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -11,17 +11,19 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping("/equipe") //TODO a vérifier
+@RequestMapping("/equipe")
 public class EquipeController {
 
-    private final EvenementService evenementService;
+    private final EquipeService equipeService;
 
-    public EquipeController(EvenementService evenementService) {
-        this.evenementService = evenementService;
+    public EquipeController(EquipeService equipeService) {
+        this.equipeService = equipeService;
     }
 
     @GetMapping
-    public String afficherEvenement(Model model) {
+    public String afficherEquipe(Model model) {
+        model.addAttribute("ListeUtilisateurSansEquipe", equipeService.getUtilisateurInEquipe(0));
+        model.addAttribute("ListeUtilisateurEquipe", equipeService.getUtilisateurInEquipe(0));
         return "public/creation/creation-equipe.html";
     }
 }

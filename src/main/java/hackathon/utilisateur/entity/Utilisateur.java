@@ -15,10 +15,6 @@ import java.time.LocalDate;
 @Table("utilisateur")
 public class Utilisateur {
 
-    // -------
-    // Champs
-    // -------
-
     @Id
     private Long	idUtilisateur;
     private String	adresseMail;
@@ -28,6 +24,7 @@ public class Utilisateur {
     private LocalDate dateNaissance;
     private String	motDePasse;
     private String	role;
+    private int     idEquipe;
     private String	lienCv;
     private String	competencesCles;
     private boolean	statutRecherche;
