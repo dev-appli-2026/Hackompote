@@ -45,6 +45,11 @@ public class EvenementService {
 
     // Return les n événements qui sont dans l'etat statu dans l'ordre Desc sur la date de début
     public List<Evenement> getEvenementsPasse(int n, String etat) {
-        return evenementRepository.findAllByStatutEventOrderByDateDebutAsc(etat,PageRequest.of(0, n));
+        return evenementRepository.findAllByStatutEventOrderByDateDebutDesc(etat,PageRequest.of(0, n));
+    }
+
+    // Return tout les evenements dans l'ordre Asc sur la date de début
+    public List<Evenement> getEvenementsAll() {
+        return evenementRepository.findAllByOrderByDateDebutAsc();
     }
 }

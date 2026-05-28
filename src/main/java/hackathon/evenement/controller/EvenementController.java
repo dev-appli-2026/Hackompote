@@ -21,7 +21,8 @@ public class EvenementController {
     }
 
     @GetMapping
-    public String afficherPages() {
+    public String afficherPages(Model model) {
+        model.addAttribute("allEvenement", evenementService.getEvenementsAll());
         return "public/evenement.html";
     }
 
