@@ -45,9 +45,9 @@
           </button>
         </div>
 
-        <!-- Ligne pseudo + bouton -->
-        <div class="row mx-1 align-items-center">
-          <div th:each="utiisateur : ${ListeUtilisateurSansEquipe}" class="col">
+<!--         Ligne pseudo + bouton-->
+        <div th:each="utilisateur : ${ListeUtilisateurSansEquipe}" class="row mx-1 align-items-center">
+          <div class="col">
             <h3 th:text="${utilisateur.nom}"></h3>
           </div>
           <div class="col-auto">
