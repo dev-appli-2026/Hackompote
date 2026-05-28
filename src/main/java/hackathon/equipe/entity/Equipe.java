@@ -1,8 +1,6 @@
-package hackathon.equipe;
+package hackathon.equipe.entity;
 
 import org.springframework.data.annotation.Id;
-import org.springframework.data.annotation.Transient;
-
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -13,13 +11,9 @@ import org.springframework.data.relational.core.mapping.Table;
 @NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode( of = { "idEquipe" } )
-@Table("badge")
+@Table("equipe")
 public class Equipe {
-
-    // -------
-    // Champs
-    // -------
-
+    
     @Id
     private Long	idEquipe;
     private String	nomEquipe;

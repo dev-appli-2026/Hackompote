@@ -45,10 +45,10 @@
           </button>
         </div>
 
-        <!-- Ligne pseudo + bouton -->
-        <div class="row mx-1 align-items-center">
+<!--         Ligne pseudo + bouton-->
+        <div th:each="utilisateur : ${ListeUtilisateurSansEquipe}" class="row mx-1 align-items-center">
           <div class="col">
-            <h3>Pseudo 1</h3>
+            <h3 th:text="${utilisateur.nom}"></h3>
           </div>
           <div class="col-auto">
             <button class="btn btn-primary rounded-3 mb-3 px-3">+</button>
