@@ -66,8 +66,8 @@
               <a href="#" class="nav-link text-white dropdown-toggle" data-bs-toggle="dropdown">Hackathon</a>
 
               <ul class="dropdown-menu">
-                <li><a th:href="@{/evenement}" class="dropdown-item">Evenement</a></li>
-                <li><a th:href="@{/equipe}" class="dropdown-item">Equipes</a></li>
+                <li><a th:href="@{/evenement}" class="dropdown-item">Évenement</a></li>
+                <li><a th:href="@{/equipe}" class="dropdown-item">Équipes</a></li>
               </ul>
             </li>
 
@@ -86,7 +86,7 @@
       <!-- ===== FIN BLOC GAUCHE ===== -->
 
       <!-- ===== BLOC DROITE : boutons connexion / déconnexion (fond orange) ===== -->
-      <div class="d-flex align-items-center rounded px-3 py-2" style="background-color: var(--hk-orange);">
+      <div class="d-flex align-items-center rounded px-3 py-2 my-2" style="background-color: var(--hk-orange);">
 
         <!-- Anonyme : bouton Se connecter -->
         <span sec:authorize="isAnonymous()">
