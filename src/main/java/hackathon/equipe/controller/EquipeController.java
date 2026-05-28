@@ -22,8 +22,10 @@ public class EquipeController {
 
     @GetMapping
     public String afficherEquipe(Model model) {
+        int numEquipe = 1;
         model.addAttribute("ListeUtilisateurSansEquipe", equipeService.getUtilisateurInEquipe(0));
-        model.addAttribute("ListeUtilisateurEquipe", equipeService.getUtilisateurInEquipe(0));
+        model.addAttribute("ListeUtilisateurEquipe", equipeService.getUtilisateurInEquipe(numEquipe));
+        model.addAttribute("MentorEquipe", equipeService.getMentorEquipe(numEquipe));
         return "public/creation/creation-equipe.html";
     }
 }

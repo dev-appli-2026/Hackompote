@@ -17,7 +17,7 @@ public interface UtilisateurRepository extends CrudRepository<Utilisateur, Long>
     // Requete pour avoir les
     List<Utilisateur> findAllByIdEquipe(int idEquipe);
 
-
+    Utilisateur findAllByIdEquipeAndRole(int idEquipe, String role);
 
 
 }

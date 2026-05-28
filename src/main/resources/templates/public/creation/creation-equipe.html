@@ -26,10 +26,11 @@
     <div class="col-7 p-4" style="min-width: 300px;">
       <div class="card shadow-sm rounded-4 p-4">
         <h1 class="row fw-bold mb-2">Nom de l'Équipe</h1>
-        <h2 class="mb-5">Nom du mentor</h2>
+        <h2 th:text="${MentorEquipe.prenom}" class="mb-1"></h2>
+        <h2 th:text="${MentorEquipe.nom}" class="mb-5"></h2>
         <h3>Liste des membres</h3>
-        <div class="d-flex flex-column gap-2">
-          <div>Pseudo 1</div>
+        <div th:each="utilisateur : ${ListeUtilisateurEquipe}" class="d-flex flex-column gap-2">
+          <div th:text="${utilisateur.pseudo}"></div>
         </div>
       </div>
     </div>
